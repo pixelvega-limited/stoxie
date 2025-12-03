@@ -1,0 +1,87 @@
+/* FT System Trial */
+@font-face {
+    font-family: 'FT System Trial';
+    font-weight: 900;
+    font-display: swap;
+    src: url('../fonts/ft-system/FTSystemTrial-BlankBlack.woff2')
+        format('woff2');
+}
+
+@font-face {
+    font-family: 'FT System Trial';
+    font-weight: 700;
+    font-display: swap;
+    src: url('../fonts/ft-system/FTSystemTrial-BlankBold.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: 'FT System Trial';
+    font-weight: 600;
+    font-display: swap;
+    src: url('../fonts/ft-system/FTSystemTrial-BlankSemibold.woff2')
+        format('woff2');
+}
+
+@font-face {
+    font-family: 'FT System Trial';
+    font-weight: 500;
+    font-display: swap;
+    src: url('../fonts/ft-system/FTSystemTrial-BlankMedium.woff2')
+        format('woff2');
+}
+
+@font-face {
+    font-family: 'FT System Trial';
+    font-weight: 400;
+    font-display: swap;
+    src: url('../fonts/ft-system/FTSystemTrial-BlankRegular.woff2')
+        format('woff2');
+}
+
+@font-face {
+    font-family: 'FT System Trial';
+    font-weight: 300;
+    font-display: swap;
+    src: url('../fonts/ft-system/FTSystemTrial-BlankLight.woff2')
+        format('woff2');
+}
+
+/* Euclid Square Trial */
+@font-face {
+    font-family: 'Euclid Square Trial';
+    font-weight: 300;
+    font-display: swap;
+    src: url('../fonts/euclid/EuclidSquare-Light-WebTrial.woff') format('woff2');
+}
+
+@font-face {
+    font-family: 'Euclid Square Trial';
+    font-weight: 400;
+    font-display: swap;
+    src: url('../fonts/euclid/EuclidSquare-Regular-WebTrial.woff')
+        format('woff2');
+}
+
+@font-face {
+    font-family: 'Euclid Square Trial';
+    font-weight: 500;
+    font-display: swap;
+    src: url('../fonts/euclid/EuclidSquare-Medium-WebTrial.woff')
+        format('woff2');
+}
+
+@font-face {
+    font-family: 'Euclid Square Trial';
+    font-weight: 600;
+    font-display: swap;
+    src: url('../fonts/euclid/EuclidSquare-Semibold-WebTrial.woff')
+        format('woff2');
+}
+
+@font-face {
+    font-family: 'Euclid Square Trial';
+    font-weight: 700;
+    font-display: swap;
+    src: url('../fonts/euclid/EuclidSquare-Bold-WebTrial.woff') format('woff2');
+}
+
