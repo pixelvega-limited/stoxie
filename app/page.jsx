@@ -4,12 +4,14 @@ import { motion } from 'framer-motion';
 import { useRef, useState } from 'react';
 import Banner from './components/banner';
 import CallToAction from './components/call-to-action';
-import Powerful from './components/home/Powerful';
 import HowWorks from './components/home/howWorks';
 import Smarter from './components/home/smarter';
 import { duration, once, y } from './lib/animation';
 
+import PrimaryButton from '@/components/common/primary-button';
+import SecondaryButton from '@/components/common/secondary-button';
 import { PauseIcon, PlayIcon } from 'lucide-react';
+import PowerfulTools from './components/home/PowerfulTools';
 
 export default function Page() {
     const videoRef = useRef(null);
@@ -41,18 +43,24 @@ export default function Page() {
                         whileInView={{ y: 0, opacity: 1 }}
                         transition={{ duration: duration, delay: 0.4 }}
                         viewport={{ once: once, amount: 0.2 }}>
-                        <a href='#' className='btn md:min-w-77 justify-center'>
-                            <span className='text-center'>See Our Plans</span>
-                        </a>
+                        <PrimaryButton
+                            text='Start Free Trial - 30 Days Free'
+                            LinkTo='#'
+                            type='link'
+                            className='md:min-w-[310px] justify-center'
+                        />
                     </motion.div>
                     <motion.div
                         initial={{ y: y, opacity: 0 }}
                         whileInView={{ y: 0, opacity: 1 }}
                         transition={{ duration: duration, delay: 0.6 }}
                         viewport={{ once: once, amount: 0.2 }}>
-                        <a href='#' className='btn btn-secondary'>
-                            <span className='text-center'>Compare Plans</span>
-                        </a>
+                        <SecondaryButton
+                            text='Compare Plans'
+                            LinkTo='#'
+                            type='link'
+                            className='justify-center'
+                        />
                     </motion.div>
                 </div>
                 <motion.div
@@ -61,11 +69,11 @@ export default function Page() {
                     transition={{ duration: duration, delay: 0.2 }}
                     viewport={{ once: once, amount: 0.2 }}
                     onClick={togglePlay}
-                    className='group cursor-pointer flex items-end justify-center overflow-hidden aspect-[1/.5] w-full mt-8 md:mt-12 lg:mt-16 relative z-1 rounded-t-3xl border md:border-2 lg:border-4 border-b-0! border-solid border-white/30 bg-white/10 backdrop-blur-2xl'>
+                    className='group cursor-pointer flex items-end justify-center  aspect-[1/.5] w-full mt-8 md:mt-12 lg:mt-16 relative z-1 rounded-t-3xl border md:border-2 lg:border-4 border-b-0! border-solid border-white/30 bg-white/10 backdrop-blur-2xl overflow-hidden'>
                     <video
                         ref={videoRef}
-                        className='pointer-events-none absolute top-0 left-0 w-full min-h-full h-auto'
-                        src=''
+                        className='pointer-events-none overflow-hidden rounded-t-3xl absolute top-0 left-0 w-full min-h-full h-auto'
+                        src='/video/video-1.mp4'
                         poster='/img/home-banner-poster.png'
                         controls={false}></video>
                     <button
@@ -142,10 +150,10 @@ export default function Page() {
                 </motion.div>
             </Banner>
             <HowWorks />
-            <Powerful />
+            <PowerfulTools />
             <Smarter />
             <CallToAction
-                title={`<span class="font-light">Ready to See</span> the Market Differently?`}
+                title={`<span class="font-extralight">Ready to See</span> the Market Differently?`}
                 des='Start your free 30-day trial and unlock smarter, AI-powered investing.'
             />
         </>

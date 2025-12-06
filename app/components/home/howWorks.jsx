@@ -1,102 +1,70 @@
-"use client"
-import Image from 'next/image'
+'use client';
+import { steps } from '@/app/data/how-it-works';
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 import { duration, once, y } from '../../lib/animation';
-import { Container } from '../grid'
-import CommonTitle from '../common-title'
-import bg from '../../../public/img/how/bg.png'
-import bg2 from '../../../public/img/how/bg-2.png'
-import bg3 from '../../../public/img/how/bg-3.png'
+import CommonTitle from '../common-title';
+import { Container } from '../grid';
+
+const Icon = ({ icon }) => {
+    return (
+        <div className='w-20 h-20 flex items-center justify-center rounded-full border border-solid border-white/16 bg-white/10 backdrop-blur-[20px] mb-6 md:mb-8 xl:mb-12 '>
+            {icon}
+        </div>
+    );
+};
+
+const Step = ({ step }) => {
+    return (
+        <div className='px-4 py-1 max-w-max flex items-center gap-10 min-h-8.5 mb-4 text-sm xl:text-base text-heading font-euclid font-normal leading-[110%] uppercase liquid-glass shadow-xl rounded-full'>
+            Step {step}
+        </div>
+    );
+};
 
 export default function HowWorks() {
-    const steps = [
-        {
-            name: 1,
-            icon: (
-                <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <g clipPath="url(#clip0_2056_736)">
-                        <path d="M22.6207 23.1725H9.37933C6.94164 23.1725 4.96552 25.1486 4.96552 27.5863C4.96552 30.024 6.94164 32 9.37933 32H22.6207C25.0584 32 27.0345 30.0239 27.0345 27.5862C27.0345 25.1485 25.0584 23.1725 22.6207 23.1725ZM19.0896 26.3725L14.6758 29.6829C14.4562 29.8475 14.1488 29.8257 13.9547 29.6315L12.8513 28.5281C12.6422 28.3116 12.6451 27.9675 12.858 27.7547C13.0708 27.5419 13.415 27.5389 13.6315 27.7479L14.3967 28.5132L18.4276 25.4897C18.6713 25.3069 19.0171 25.3563 19.2 25.6001C19.3828 25.8438 19.3335 26.1896 19.0896 26.3725Z" fill="#EEEFF1" />
-                        <path d="M29.7931 11.5862H2.20688C0.988063 11.5862 0 12.5742 0 13.7931V18.2069C0 19.4257 0.988063 20.4138 2.20688 20.4138H29.7931C31.0119 20.4138 32 19.4257 32 18.2069V13.7931C32 12.5742 31.0119 11.5862 29.7931 11.5862ZM11.5862 14.3448H14.3448C14.6495 14.3448 14.8966 14.5918 14.8966 14.8966C14.8966 15.2012 14.6496 15.4483 14.3448 15.4483H11.5862C11.2815 15.4483 11.0344 15.2013 11.0344 14.8966C11.0345 14.5918 11.2815 14.3448 11.5862 14.3448ZM9.37931 17.1034C9.37931 18.0176 8.63825 18.7586 7.72412 18.7586H3.31037C2.39625 18.7586 1.65519 18.0176 1.65519 17.1034V14.8966C1.65519 13.9824 2.39625 13.2414 3.31037 13.2414H7.72419C8.63831 13.2414 9.37938 13.9824 9.37938 14.8966V17.1034H9.37931ZM28.6896 17.6552H11.5862C11.2815 17.6552 11.0344 17.4082 11.0344 17.1034C11.0344 16.7987 11.2814 16.5517 11.5862 16.5517H28.6896C28.9943 16.5517 29.2414 16.7987 29.2414 17.1034C29.2414 17.4082 28.9944 17.6552 28.6896 17.6552Z" fill="#EEEFF1" />
-                        <path fillRule="evenodd" clipRule="evenodd" d="M5.51726 16.5518C5.15926 16.551 4.81107 16.4349 4.52414 16.2207L2.75864 14.8966V17.1035C2.75864 17.4082 3.00564 17.6552 3.31039 17.6552H7.7242C8.02889 17.6552 8.27595 17.4082 8.27595 17.1035V14.8966L6.51651 16.2207C6.22739 16.4352 5.87714 16.5512 5.51726 16.5518Z" fill="#EEEFF1" />
-                        <path fillRule="evenodd" clipRule="evenodd" d="M5.85762 15.338L7.17237 14.3448H3.86206L5.18344 15.338C5.38412 15.485 5.65694 15.485 5.85762 15.338Z" fill="#EEEFF1" />
-                        <path fillRule="evenodd" clipRule="evenodd" d="M5.51726 4.96558C4.90782 4.96558 4.41382 5.45958 4.41382 6.06901H6.62069C6.62069 5.45964 6.12669 4.96558 5.51726 4.96558Z" fill="#EEEFF1" />
-                        <path d="M5.51727 3.86217C5.82199 3.86217 6.06902 3.61514 6.06902 3.31042C6.06902 3.00569 5.82199 2.75867 5.51727 2.75867C5.21254 2.75867 4.96552 3.00569 4.96552 3.31042C4.96552 3.61514 5.21254 3.86217 5.51727 3.86217Z" fill="#EEEFF1" />
-                        <path d="M29.7931 0H2.20688C0.988063 0 0 0.988063 0 2.20688V6.62069C0 7.8395 0.988063 8.82756 2.20688 8.82756H29.7931C31.0119 8.82756 32 7.8395 32 6.62069V2.20688C32 0.988063 31.0119 0 29.7931 0ZM11.5862 2.75863H14.3448C14.6495 2.75863 14.8966 3.00563 14.8966 3.31037C14.8966 3.61512 14.6496 3.86212 14.3448 3.86212H11.5862C11.2815 3.86212 11.0344 3.61512 11.0344 3.31037C11.0344 3.00563 11.2815 2.75863 11.5862 2.75863ZM6.62069 7.17244H4.41381C3.80438 7.17244 3.31037 6.67844 3.31037 6.069C3.31212 5.37312 3.6435 4.71919 4.20363 4.30625C3.98344 4.02087 3.86337 3.67088 3.86212 3.31037C3.86212 2.39625 4.60319 1.65519 5.51731 1.65519C6.43144 1.65519 7.1725 2.39625 7.1725 3.31037C7.17063 3.66987 7.05062 4.01881 6.831 4.3035C7.39187 4.71706 7.72337 5.37212 7.72425 6.069C7.72412 6.67837 7.23012 7.17244 6.62069 7.17244ZM28.6896 6.06894H11.5862C11.2815 6.06894 11.0344 5.82194 11.0344 5.51719C11.0344 5.2125 11.2814 4.96544 11.5862 4.96544H28.6896C28.9943 4.96544 29.2414 5.21244 29.2414 5.51719C29.2414 5.82194 28.9944 6.06894 28.6896 6.06894Z" fill="#EEEFF1" />
-                    </g>
-                    <defs>
-                        <clipPath id="clip0_2056_736">
-                            <rect width="32" height="32" fill="white" />
-                        </clipPath>
-                    </defs>
-                </svg>
-            ),
-            title: 'Sign up in minutes',
-            des: 'Create your free account.',
-            img: bg,
-        },
-        {
-            name: 2,
-            icon: (<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path fillRule="evenodd" clipRule="evenodd" d="M3 18.009C2.49 18.056 2.01 18.279 1.644 18.644C1.232 19.057 1 19.617 1 20.2V25.8C1 26.383 1.232 26.943 1.644 27.356C2.01 27.721 2.49 27.944 3 27.991V30C3 30.552 3.448 31 4 31C4.552 31 5 30.552 5 30V27.991C5.51 27.944 5.99 27.721 6.356 27.356C6.768 26.943 7 26.383 7 25.8V20.2C7 19.617 6.768 19.057 6.356 18.644C5.99 18.279 5.51 18.056 5 18.009V16C5 15.448 4.552 15 4 15C3.448 15 3 15.448 3 16V18.009Z" fill="#EEEFF1" />
-                <path fillRule="evenodd" clipRule="evenodd" d="M19 14.009C18.49 14.056 18.01 14.279 17.644 14.644C17.232 15.057 17 15.617 17 16.2V24.8C17 25.383 17.232 25.943 17.644 26.356C18.01 26.721 18.49 26.944 19 26.991V29C19 29.552 19.448 30 20 30C20.552 30 21 29.552 21 29V26.991C21.51 26.944 21.99 26.721 22.356 26.356C22.768 25.943 23 25.383 23 24.8V16.2C23 15.617 22.768 15.057 22.356 14.644C21.99 14.279 21.51 14.056 21 14.009V12C21 11.448 20.552 11 20 11C19.448 11 19 11.448 19 12V14.009Z" fill="#EEEFF1" />
-                <path fillRule="evenodd" clipRule="evenodd" d="M11 10.009C10.49 10.056 10.01 10.279 9.644 10.644C9.232 11.057 9 11.617 9 12.2V21.8C9 22.383 9.232 22.943 9.644 23.356C10.01 23.721 10.49 23.944 11 23.991V26C11 26.552 11.448 27 12 27C12.552 27 13 26.552 13 26V23.991C13.51 23.944 13.99 23.721 14.356 23.356C14.768 22.943 15 22.383 15 21.8V12.2C15 11.617 14.768 11.057 14.356 10.644C13.99 10.279 13.51 10.056 13 10.009V8C13 7.448 12.552 7 12 7C11.448 7 11 7.448 11 8V10.009Z" fill="#EEEFF1" />
-                <path fillRule="evenodd" clipRule="evenodd" d="M27 4.009C25.879 4.11 25 5.05201 25 6.20001V17.8C25 18.948 25.879 19.89 27 19.991V22C27 22.552 27.448 23 28 23C28.552 23 29 22.552 29 22V19.991C30.121 19.89 31 18.948 31 17.8V6.20001C31 5.05201 30.121 4.11 29 4.009V2C29 1.448 28.552 1 28 1C27.448 1 27 1.448 27 2V4.009Z" fill="#EEEFF1" />
-            </svg>
-            ),
-            title: 'Build your watchlist',
-            des: 'Follow the stocks, funds, and trends you care about.',
-            img: bg2,
-        },
-        {
-            name: 3,
-            icon: (<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path fillRule="evenodd" clipRule="evenodd" d="M25 10.6667C25 8.64133 23.3587 7 21.3333 7H10.6667C8.64133 7 7 8.64133 7 10.6667V21.3333C7 23.3587 8.64133 25 10.6667 25H21.3333C23.3587 25 25 23.3587 25 21.3333V10.6667ZM18.6667 13.3333V18.6667C18.6667 19.2187 19.1147 19.6667 19.6667 19.6667C20.2187 19.6667 20.6667 19.2187 20.6667 18.6667V13.3333C20.6667 12.7813 20.2187 12.3333 19.6667 12.3333C19.1147 12.3333 18.6667 12.7813 18.6667 13.3333ZM17.3333 18.6667V14.6667C17.3333 13.3787 16.2893 12.3333 15 12.3333H13.6667C12.3773 12.3333 11.3333 13.3787 11.3333 14.6667V18.6667C11.3333 19.2187 11.7813 19.6667 12.3333 19.6667C12.8853 19.6667 13.3333 19.2187 13.3333 18.6667V17.6667H15.3333V18.6667C15.3333 19.2187 15.7813 19.6667 16.3333 19.6667C16.8853 19.6667 17.3333 19.2187 17.3333 18.6667ZM13.3333 15.6667H15.3333V14.6667C15.3333 14.4827 15.184 14.3333 15 14.3333H13.6667C13.4827 14.3333 13.3333 14.4827 13.3333 14.6667V15.6667Z" fill="#EEEFF1" />
-                <path fillRule="evenodd" clipRule="evenodd" d="M24 17H29.3333C29.8853 17 30.3333 16.552 30.3333 16C30.3333 15.448 29.8853 15 29.3333 15H24C23.448 15 23 15.448 23 16C23 16.552 23.448 17 24 17Z" fill="#EEEFF1" />
-                <path fillRule="evenodd" clipRule="evenodd" d="M17 7.99996V2.66663C17 2.11463 16.552 1.66663 16 1.66663C15.448 1.66663 15 2.11463 15 2.66663V7.99996C15 8.55196 15.448 8.99996 16 8.99996C16.552 8.99996 17 8.55196 17 7.99996Z" fill="#EEEFF1" />
-                <path fillRule="evenodd" clipRule="evenodd" d="M15 24V29.3333C15 29.8853 15.448 30.3333 16 30.3333C16.552 30.3333 17 29.8853 17 29.3333V24C17 23.448 16.552 23 16 23C15.448 23 15 23.448 15 24Z" fill="#EEEFF1" />
-                <path fillRule="evenodd" clipRule="evenodd" d="M7.99996 15H2.66663C2.11463 15 1.66663 15.448 1.66663 16C1.66663 16.552 2.11463 17 2.66663 17H7.99996C8.55196 17 8.99996 16.552 8.99996 16C8.99996 15.448 8.55196 15 7.99996 15Z" fill="#EEEFF1" />
-                <path fillRule="evenodd" clipRule="evenodd" d="M24 13H27.3333C27.8853 13 28.3333 12.552 28.3333 12C28.3333 11.448 27.8853 11 27.3333 11H24C23.448 11 23 11.448 23 12C23 12.552 23.448 13 24 13Z" fill="#EEEFF1" />
-                <path fillRule="evenodd" clipRule="evenodd" d="M13 7.99996V4.66663C13 4.11463 12.552 3.66663 12 3.66663C11.448 3.66663 11 4.11463 11 4.66663V7.99996C11 8.55196 11.448 8.99996 12 8.99996C12.552 8.99996 13 8.55196 13 7.99996Z" fill="#EEEFF1" />
-                <path fillRule="evenodd" clipRule="evenodd" d="M11 24V27.3333C11 27.8853 11.448 28.3333 12 28.3333C12.552 28.3333 13 27.8853 13 27.3333V24C13 23.448 12.552 23 12 23C11.448 23 11 23.448 11 24Z" fill="#EEEFF1" />
-                <path fillRule="evenodd" clipRule="evenodd" d="M7.99996 11H4.66663C4.11463 11 3.66663 11.448 3.66663 12C3.66663 12.552 4.11463 13 4.66663 13H7.99996C8.55196 13 8.99996 12.552 8.99996 12C8.99996 11.448 8.55196 11 7.99996 11Z" fill="#EEEFF1" />
-                <path fillRule="evenodd" clipRule="evenodd" d="M24 21H27.3333C27.8853 21 28.3333 20.552 28.3333 20C28.3333 19.448 27.8853 19 27.3333 19H24C23.448 19 23 19.448 23 20C23 20.552 23.448 21 24 21Z" fill="#EEEFF1" />
-                <path fillRule="evenodd" clipRule="evenodd" d="M21 7.99996V4.66663C21 4.11463 20.552 3.66663 20 3.66663C19.448 3.66663 19 4.11463 19 4.66663V7.99996C19 8.55196 19.448 8.99996 20 8.99996C20.552 8.99996 21 8.55196 21 7.99996Z" fill="#EEEFF1" />
-                <path fillRule="evenodd" clipRule="evenodd" d="M19 24V27.3333C19 27.8853 19.448 28.3333 20 28.3333C20.552 28.3333 21 27.8853 21 27.3333V24C21 23.448 20.552 23 20 23C19.448 23 19 23.448 19 24Z" fill="#EEEFF1" />
-                <path fillRule="evenodd" clipRule="evenodd" d="M7.99996 19H4.66663C4.11463 19 3.66663 19.448 3.66663 20C3.66663 20.552 4.11463 21 4.66663 21H7.99996C8.55196 21 8.99996 20.552 8.99996 20C8.99996 19.448 8.55196 19 7.99996 19Z" fill="#EEEFF1" />
-            </svg>
-            ),
-            title: 'Get AI insights instantly',
-            des: 'See real-time AI analysis, trends, and alerts personalized for you.',
-            img: bg3,
-        },
-    ]
-
     return (
-        <div className="common-padding relative z-1">
-            <div className="size-140 rounded-full absolute -bottom-[50%] -right-[10%] blur-[400px] bg-[linear-gradient(180deg,rgba(252,193,113,0.30)_0%,rgba(193,124,86,0.30)_100%)]"></div>
+        <div className='common-padding relative z-1'>
+            <div className='size-140 rounded-full absolute -bottom-[50%] -right-[10%] blur-[400px] bg-[linear-gradient(180deg,rgba(252,193,113,0.30)_0%,rgba(193,124,86,0.30)_100%)]'></div>
             <Container>
-                <CommonTitle className="text-center mb-8 md:mb-12 lg:mb-16" title={`How <span class='font-normal'>Stoxie</span> Works`} />
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-10">
+                <CommonTitle
+                    className='text-center mb-8 md:mb-12 lg:mb-16'
+                    title={`How <span class='font-extralight'>Stoxie</span> Works`}
+                />
+                <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-10'>
                     {steps.map((item, index) => (
                         <motion.div
                             initial={{ y: y, opacity: 0 }}
                             whileInView={{ y: 0, opacity: 1 }}
-                            transition={{ duration: duration, delay: `0.${index + 1}` }}
-                            viewport={{ once: once, amount: 0.2, }}
-                            key={item.name} className="relative p-6 xl:p-7.5 rounded-2xl bg-white/5 overflow-hidden">
-                            <Image src={item.img} width='369px' height='356px' alt={item.title} className="absolute top-0 left-0 w-full h-full object-cover -z-10" />
-                            <div className={`border border-solid border-white/20 w-20 h-20 flex items-center justify-center rounded-full mb-6 md:mb-8 xl:mb-12 ${index === 0 ? 'bg-white/10' : index === 1 ? 'bg-[#383B41]' : 'bg-[#433A3A]'}`}>
-                                {item.icon}
-                            </div>
-                            <span className="px-4 py-1 max-w-max flex items-center min-h-8.5 mb-4 text-sm xl:text-base text-white font-ft-euclid font-normal leading-[110%] uppercase bg-white/10 border border-white/20 rounded-full">
-                                Step {index + 1}
-                            </span>
-                            <h3 className="text-2xl text-white font-euclid font-semibold leading-[110%] mb-2.5">{item.title}</h3>
-                            <p className="text-base text-white font-euclid font-normal leading-[140%] max-w-67">{item.des}</p>
+                            transition={{
+                                duration: duration,
+                                delay: `0.${index + 1}`,
+                            }}
+                            viewport={{ once: once, amount: 0.2 }}
+                            key={item.name}
+                            className='relative p-6 xl:p-7.5 rounded-2xl bg-white/5 overflow-hidden'>
+                            <Image
+                                src={item.img}
+                                width='369px'
+                                height='356px'
+                                unoptimized
+                                quality={100}
+                                alt={item.title}
+                                className='absolute top-0 left-0 w-full h-full object-cover -z-10'
+                            />
+                            <Icon icon={item.icon} />
+                            <Step step={index + 1} />
+                            <h3 className='text-2xl text-heading font-euclid font-semibold leading-[110%] mb-2.5'>
+                                {item.title}
+                            </h3>
+                            <p className='text-base text-para font-euclid font-normal leading-[140%] max-w-67'>
+                                {item.des}
+                            </p>
                         </motion.div>
                     ))}
                 </div>
             </Container>
         </div>
-    )
+    );
 }
+

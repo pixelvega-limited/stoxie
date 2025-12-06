@@ -41,11 +41,14 @@
     --radius-xl: calc(var(--radius) + 4px);
 
     /* Design token from Figma */
+    --color-background: #040406;
     --color-primary: #fcc171;
     --color-secondary: #c17c56;
     --color-tertiary: #362821;
-    --color-para: #abaebb;
+    --color-para: #c7c9d1;
     --color-heading: #eeeff1;
+    --color-sub-title: #abaebb;
+    --color-btn-text: #e3e4e9;
     --color-stroke: #28272c;
     --breakpoint-xs: 390px;
     --breakpoint-sm: 414px;
@@ -93,8 +96,8 @@
 }
 
 .dark {
-    --background: oklch(0.145 0 0);
-    --foreground: oklch(0.985 0 0);
+    --background: #040406;
+    --foreground: #eeeff1;
     --card: oklch(0.205 0 0);
     --card-foreground: oklch(0.985 0 0);
     --popover: oklch(0.205 0 0);

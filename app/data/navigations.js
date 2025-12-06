@@ -89,21 +89,21 @@ export const footerLinks = [
             },
         ]
     },
-    // {
-    //   title: 'Legal & Policies',
-    //   lists: [
-    //     {
-    //       name: 'Privacy Policy',
-    //       path: '/policy',
-    //     },
-    //     {
-    //       name: 'Terms of Service',
-    //       path: '/terms',
-    //     },
-    //     {
-    //       name: 'Disclaimer',
-    //       path: '/disclaimer',
-    //     },
-    //   ]
-    // },
+    {
+        title: 'Legal & Policies',
+        lists: [
+            {
+                name: 'Privacy Policy',
+                path: '/policy',
+            },
+            {
+                name: 'Terms of Service',
+                path: '/terms',
+            },
+            {
+                name: 'Disclaimer',
+                path: '/disclaimer',
+            },
+        ]
+    },
 ]

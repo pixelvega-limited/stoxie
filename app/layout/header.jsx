@@ -1,4 +1,5 @@
 'use client';
+import SecondaryButton from '@/components/common/secondary-button';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
@@ -124,9 +125,12 @@ export default function Header() {
                             </nav>
                         </nav>
                         <div className='heading-actions flex items-center flex-wrap gap-2 md:gap-3'>
-                            <Link href={'#'} className='btn btn-secondary'>
-                                <span>Try for free</span>
-                            </Link>
+                            <SecondaryButton
+                                text='Try for free'
+                                type='link'
+                                LinkTo='#'
+                            />
+
                             <button
                                 className='heading-toggler lg:hidden!'
                                 onClick={() => setIsMenu(!isMenu)}>
