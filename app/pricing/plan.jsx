@@ -1,99 +1,14 @@
 'use client';
+import PrimaryButton from '@/components/common/primary-button';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import CommonTitle from '../components/common-title';
 import { Container } from '../components/grid';
+import { planTable } from '../data/plans';
 import { duration, once, y } from '../lib/animation';
 import { Calender } from '../lib/icons';
 
 export default function plan() {
-    const planTable = [
-        {
-            feature: 'Free Trial',
-            preview: '30-day free trial (Premium features)',
-        },
-        {
-            feature: 'Lens (Stock Insights)',
-            preview: '3/day, short verdict',
-            essentials: 'Unlimited, full rationale + confidence meter',
-            premium: 'Unlimited, full rationale + confidence meter',
-        },
-        {
-            feature: 'Fundamental Analysis',
-            essentials: 'Full + downloadable PDF reports',
-            premium: 'Full + downloadable PDF reports',
-        },
-        {
-            feature: 'Peer Analysis',
-            essentials: 'Unlimited peers + peer-relative recommendations',
-            premium: 'Unlimited peers + peer-relative recommendations',
-        },
-        {
-            feature: 'Technical Analysis',
-            essentials: 'Full technicals & advanced indicators',
-            premium: 'Full technicals & advanced indicators',
-        },
-        {
-            feature: 'Earnings Digest',
-            essentials: 'Full transcript digest & KPI table',
-            premium: 'Full transcript digest & KPI table',
-        },
-        {
-            feature: 'News + Sentiment',
-            preview: 'Top headline/day',
-            essentials: 'Real-time feed & sentiment scoring',
-            premium: 'Real-time feed & sentiment scoring',
-        },
-        {
-            feature: 'ESG Analysis',
-            essentials: 'Historical ESG trends & pillar breakdown',
-            premium: 'Historical ESG trends & pillar breakdown',
-        },
-        {
-            feature: 'Vault (Funds & ETFs)',
-            essentials: 'Full fund comparator & allocation analysis',
-            premium: 'Full fund comparator & allocation analysis',
-        },
-        {
-            feature: 'Pulse (Themes)',
-            preview: '1 starter theme',
-            essentials: 'Custom themes & thematic screening',
-            premium: 'Custom themes & thematic screening',
-        },
-        {
-            feature: 'Portfolio Tagging',
-            essentials: 'Full portfolio tagging & discovery',
-            premium: 'Full portfolio tagging & discovery',
-        },
-        {
-            feature: 'Watchlists',
-            preview: '1 list, 5 tickers',
-            essentials: 'Unlimited watchlists',
-            premium: 'Unlimited + shared watchlists',
-        },
-        {
-            feature: 'Exports & Reports',
-            essentials: 'CSV/PDF exports',
-            premium: 'CSV/PDF exports',
-        },
-        {
-            feature: 'Support',
-            preview: 'Email',
-            essentials: 'Priority email support',
-            premium: 'Priority email support',
-        },
-        {
-            feature: 'Edge (Alerts)',
-            essentials: 'Limited: up to 5-10 instruments',
-            premium: 'Unlimited predictive alerts + SMS/email',
-        },
-        {
-            feature: 'Patricia (Al Chat)',
-            preview: '5 questions',
-            premium: 'Unlimited, priority',
-        },
-    ];
-
     const free = [
         {
             name: 'Free 30-day trial.',
@@ -114,7 +29,7 @@ export default function plan() {
             <Container className='xl:max-w-325'>
                 <CommonTitle
                     className='mb-8 md:mb-12 lg:mb-16 text-center'
-                    title={`<span class="font-light">Compare</span> All Plan Features`}
+                    title={`<span class="font-extralight">Compare</span> All Plan Features`}
                 />
                 <motion.div
                     initial={{ y: y, opacity: 0 }}
@@ -162,13 +77,13 @@ export default function plan() {
                                             {item.feature}
                                         </td>
                                         <td className='border-r last:border-r-0 border-white/16 py-4 px-8 w-25 text-sm md:text-base lg:text-lg text-heading font-normal font-euclid leading-[110%]'>
-                                            <p className=''>
+                                            <div className=''>
                                                 {item.preview ? (
                                                     <p className=''>
                                                         {item.preview}
                                                     </p>
                                                 ) : (
-                                                    <p className='max-w-5'>
+                                                    <div className='max-w-5'>
                                                         <svg
                                                             width='24'
                                                             height='24'
@@ -187,18 +102,18 @@ export default function plan() {
                                                                 fill='#535354'
                                                             />
                                                         </svg>
-                                                    </p>
+                                                    </div>
                                                 )}
-                                            </p>
+                                            </div>
                                         </td>
                                         <td className='border-r last:border-r-0 border-white/16 py-4 px-8 w-25 text-sm md:text-base lg:text-lg text-heading font-normal font-euclid leading-[110%]'>
-                                            <p className=''>
+                                            <div className=''>
                                                 {item.essentials ? (
                                                     <p className=''>
                                                         {item.essentials}
                                                     </p>
                                                 ) : (
-                                                    <p className='max-w-5'>
+                                                    <div className='max-w-5'>
                                                         <svg
                                                             width='24'
                                                             height='24'
@@ -217,12 +132,12 @@ export default function plan() {
                                                                 fill='#535354'
                                                             />
                                                         </svg>
-                                                    </p>
+                                                    </div>
                                                 )}
-                                            </p>
+                                            </div>
                                         </td>
                                         <td className='border-r last:border-r-0 border-white/16 py-4 px-8 w-25 text-sm md:text-base lg:text-lg text-heading font-normal font-euclid leading-[110%]'>
-                                            <p className=''>
+                                            <div className=''>
                                                 {item.premium ? (
                                                     <p className=''>
                                                         {item.premium}
@@ -249,7 +164,7 @@ export default function plan() {
                                                         </svg>
                                                     </p>
                                                 )}
-                                            </p>
+                                            </div>
                                         </td>
                                     </tr>
                                 ))}
@@ -299,10 +214,11 @@ export default function plan() {
                         whileInView={{ y: 0, opacity: 1 }}
                         transition={{ duration: duration, delay: 0 }}
                         viewport={{ once: once, amount: 0.2 }}
-                        className=''>
-                        <button className='btn btn-secondary flex items-center justify-center mx-auto '>
-                            <span>Compare Plans</span>
-                        </button>
+                        className='mt-[64px]'>
+                        <PrimaryButton
+                            text='Start Free Trial Now'
+                            className='mx-auto flex justify-center items-center max-w-max'
+                        />
                     </motion.div>
                 </div>
             </Container>

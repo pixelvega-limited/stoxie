@@ -20,12 +20,12 @@ export default function banner({
 }) {
     return (
         <div
-            className={`relative z-1 overflow-hidden pt-28 md:pt-35 lg:pt-45 xl:pt-53 ${className}`}>
+            className={`relative z-1 min-h-screen overflow-hidden pt-28 md:pt-35 lg:pt-45 xl:pt-53 ${className}`}>
             <div className='absolute top-0 left-0 w-full h-full -z-10 pointer-events-none'>
                 <Image
                     src='/img/banner-bg.png'
                     alt=''
-                    className='size-full object-cover'
+                    className='size-full'
                     width={2400}
                     height={1100}
                     unoptimized
@@ -40,7 +40,7 @@ export default function banner({
                             whileInView={{ y: 0, opacity: 1 }}
                             transition={{ duration: duration, delay: 0 }}
                             viewport={{ once: once, amount: 0.2 }}
-                            className={`block text-sm md:text-base lg:text-lg xl:text-xl leading-none! mb-2.5 lg:mb-4 text-sub-title ${subtitleClass}`}>
+                            className={`block uppercase text-sm md:text-base lg:text-lg xl:text-xl leading-none! mb-2.5 lg:mb-4 text-sub-title ${subtitleClass}`}>
                             {subtitle}
                         </motion.span>
                     )}

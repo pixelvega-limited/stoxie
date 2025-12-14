@@ -2,7 +2,7 @@ import Pricing from '../../pricing/pricing.jsx';
 import CommonTitle from '../common-title';
 import { Container } from '../grid';
 
-export default function smarter() {
+export default function PlanAndPricing() {
     return (
         <div className='common-padding relative z-1'>
             <div className='size-140 rounded-full absolute bottom-[10%] -right-[10%] blur-[400px] bg-[linear-gradient(180deg,rgba(252,193,113,0.30)_0%,rgba(193,124,86,0.30)_100%)]'></div>

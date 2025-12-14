@@ -3,15 +3,15 @@
 import { motion } from 'framer-motion';
 import { useRef, useState } from 'react';
 import Banner from './components/banner';
-import CallToAction from './components/call-to-action';
 import HowWorks from './components/home/howWorks';
-import Smarter from './components/home/smarter';
 import { duration, once, y } from './lib/animation';
 
 import PrimaryButton from '@/components/common/primary-button';
 import SecondaryButton from '@/components/common/secondary-button';
 import { PauseIcon, PlayIcon } from 'lucide-react';
+import FooterCallToAction from './components/call-to-action';
 import PowerfulTools from './components/home/PowerfulTools';
+import PlanAndPricing from './components/home/smarter';
 
 export default function Page() {
     const videoRef = useRef(null);
@@ -151,8 +151,9 @@ export default function Page() {
             </Banner>
             <HowWorks />
             <PowerfulTools />
-            <Smarter />
-            <CallToAction
+            <PlanAndPricing />
+            <FooterCallToAction
+                enableBg={false}
                 title={`<span class="font-extralight">Ready to See</span> the Market Differently?`}
                 des='Start your free 30-day trial and unlock smarter, AI-powered investing.'
             />

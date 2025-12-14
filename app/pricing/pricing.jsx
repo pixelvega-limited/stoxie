@@ -1,4 +1,5 @@
 'use client';
+import SecondaryButton from '@/components/common/secondary-button';
 import { Badge } from '@/components/ui/badge';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
@@ -61,11 +62,11 @@ export default function pricing() {
                             <Image
                                 src='/img/pricing-bg.png'
                                 alt=''
-                                width={360}
-                                height={352}
+                                width={860}
+                                height={852}
                                 unoptimized
                                 quality={100}
-                                className={`absolute inset-px h-[99%] w-[99%]  rounded-xl md:rounded-2xl xl:rounded-3xl lg:rounded-[30px]  left-1/2 -translate-x-1/2 -z-1 group-hover:opacity-100 ${
+                                className={`absolute object-cover inset-px w-[99%]  rounded-t-xl md:rounded-t-2xl xl:rounded-t-3xl lg:rounded-t-[30px]  left-1/2 -translate-x-1/2 -z-1 group-hover:opacity-100 ${
                                     index === 1 ? 'opacity-100' : 'opacity-0'
                                 }`}
                             />
@@ -144,9 +145,11 @@ export default function pricing() {
                     transition={{ duration: duration, delay: 0 }}
                     viewport={{ once: once, amount: 0.2 }}
                     className=''>
-                    <button className='btn btn-secondary flex items-center justify-center mx-auto '>
-                        <span>Compare Plans</span>
-                    </button>
+                    <SecondaryButton
+                        className='max-w-max mx-auto flex justify-center items-center'
+                        text='Compare Plans'
+                        LinkTo='/pricing'
+                    />
                 </motion.div>
             </div>
         </div>
