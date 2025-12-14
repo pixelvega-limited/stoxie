@@ -46,7 +46,7 @@ export default function page() {
                                 <h4 className='text-2xl leading-none mt-4'>
                                     Talk to sales
                                 </h4>
-                                <p className='text-base mt-3'>
+                                <p className='text-para mt-3'>
                                     Complete the thought build better insights.
                                 </p>
                             </div>

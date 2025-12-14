@@ -1,5 +1,6 @@
 'use client';
 
+import { cn } from '@/lib/utils';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { duration, once, y } from '../lib/animation';
@@ -20,7 +21,10 @@ export default function banner({
 }) {
     return (
         <div
-            className={`relative z-1 min-h-screen overflow-hidden pt-28 md:pt-35 lg:pt-45 xl:pt-53 ${className}`}>
+            className={cn(
+                'relative z-1 h-screen overflow-hidden pt-28 md:pt-35 lg:pt-45 xl:pt-53',
+                className
+            )}>
             <div className='absolute top-0 left-0 w-full h-full -z-10 pointer-events-none'>
                 <Image
                     src='/img/banner-bg.png'

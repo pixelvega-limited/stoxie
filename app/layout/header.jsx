@@ -85,7 +85,7 @@ export default function Header() {
                                         className='relative group z-1'
                                         key={index}>
                                         <Link
-                                            className={`heading-link flex items-center gap-1.5 capitalize ${
+                                            className={`heading-link text-white hover:text-primary transition-colors flex items-center gap-1.5 capitalize ${
                                                 pathname === link.path
                                                     ? 'active'
                                                     : ''
@@ -108,7 +108,7 @@ export default function Header() {
                                                         <Link
                                                             key={i}
                                                             href={item.path}
-                                                            className={`heading-link py-1! lg:py-0! px-2! hover:translate-x-1 ${
+                                                            className={`heading-link text-white hover:text-primary  py-1! lg:py-0! px-2! hover:translate-x-1 ${
                                                                 pathname ===
                                                                 item.path
                                                                     ? 'active'
