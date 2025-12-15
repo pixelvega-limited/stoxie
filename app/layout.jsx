@@ -6,6 +6,7 @@ export const metadata = {
 };
 
 import { ThemeProvider } from '@/components/theme-provider';
+import { SmoothScroll } from './components/smooth-scroll';
 import Header from './layout/header';
 
 export default function RootLayout({ children }) {
@@ -14,6 +15,7 @@ export default function RootLayout({ children }) {
             <html lang='en' suppressHydrationWarning>
                 <head />
                 <body suppressHydrationWarning className={`antialiased`}>
+                    <SmoothScroll />
                     <ThemeProvider
                         attribute='class'
                         defaultTheme='system'

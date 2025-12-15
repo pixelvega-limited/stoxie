@@ -26,13 +26,13 @@ export default function page() {
         <>
             <Banner
                 innerClass='max-w-203.5'
-                className='text-center min-h-150 md:min-h-200 lg:min-h-230 xl:min-h-250'
+                className='text-center common-padding'
                 subtitle='We’re Here to Help'
                 title='Need assistance? Let’s connect.'
                 des='Whether you have a question, need help with your account, or want to learn more about Stoxie, our team is here to help.'
                 desClass='lg:max-w-200!'
                 is_btn={false}></Banner>
-            <div className='common-padding pt-0! relative z-2 -mt-50 md:-mt-85'>
+            <div className='max-lg:pt-20! relative z-2 lg:-mt-85 '>
                 <Container>
                     <motion.div
                         initial={{ y: y, opacity: 0 }}

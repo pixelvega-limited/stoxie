@@ -16,7 +16,7 @@ const Icon = ({ icon }) => {
 
 const Step = ({ step }) => {
     return (
-        <div className='px-4 py-1 max-w-max flex items-center gap-10 min-h-8.5 mb-4 text-sm xl:text-base text-heading font-euclid font-normal leading-[110%] uppercase liquid-glass shadow-xl rounded-full'>
+        <div className='px-4 py-1 max-w-max flex items-center gap-10 min-h-8.5 mb-4 text-sm xl:text-base text-heading font-euclid font-normal leading-[110%] uppercase gradient-border  justify-center rounded-full border border-solid border-white/8  bg-white/10 backdrop-blur-[20px] shadow-xl '>
             Step {step}
         </div>
     );

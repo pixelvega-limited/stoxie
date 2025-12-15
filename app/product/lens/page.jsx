@@ -43,7 +43,7 @@ export default function page() {
                 des={
                     'Join thousands of investors using Stoxie to see the market differently.'
                 }
-                btnText='Try Lens Free — 30 Days'
+                btnText='Start Free Trial — 30 Days'
             />
         </>
     );

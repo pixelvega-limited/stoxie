@@ -11,7 +11,8 @@ export default function page() {
     return (
         <>
             <Banner
-                className='text-center h-96 pb-25 md:pb-40 lg:pb-50 xl:pb-75 min-h-150 md:min-h-200 lg:min-h-230 xl:min-h-250 '
+                bannerHeight='lg:h-[calc(100vh-8rem)]'
+                className='common-padding text-center'
                 subtitle='Insights & Education'
                 title='Learn. Grow. Invest Smarter.'
                 des='Explore practical guides, market analysis, and AI-driven insights to help you make better investing decisions.'

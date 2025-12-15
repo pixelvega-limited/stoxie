@@ -1,5 +1,6 @@
 'use client';
 import SecondaryButton from '@/components/common/secondary-button';
+import { AnimatePresence, motion } from 'framer-motion';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
@@ -12,9 +13,12 @@ export default function Header() {
     const pathname = usePathname();
 
     const [isMenu, setIsMenu] = useState(false);
-    const handleTouchStart = () => {
-        setIsMenu(!isMenu);
-    };
+
+    // Toggle menu
+    const toggleMenu = () => setIsMenu(!isMenu);
+
+    // Close menu (used on link click)
+    const closeMenu = () => setIsMenu(false);
 
     const [scrolled, setScrolled] = useState(false);
     const [lastScroll, setLastScroll] = useState(0);
@@ -46,6 +50,63 @@ export default function Header() {
         }
     }, [isMenu]);
 
+    // Animation Variants
+    const menuVariants = {
+        initial: { x: '100%' },
+        animate: {
+            x: 0,
+            transition: {
+                type: 'spring',
+                stiffness: 200,
+                damping: 25,
+                mass: 0.8,
+            },
+        },
+        exit: {
+            x: '100%',
+            transition: {
+                type: 'spring',
+                stiffness: 200,
+                damping: 25,
+            },
+        },
+    };
+
+    const containerVariants = {
+        initial: {},
+        animate: {
+            transition: {
+                staggerChildren: 0.08,
+                delayChildren: 0.2,
+            },
+        },
+        exit: {
+            transition: {
+                staggerChildren: 0.05,
+                staggerDirection: -1,
+            },
+        },
+    };
+
+    const itemVariants = {
+        initial: { y: 20, opacity: 0 },
+        animate: {
+            y: 0,
+            opacity: 1,
+            transition: { duration: 0.4, ease: 'easeOut' },
+        },
+        exit: { y: 10, opacity: 0, transition: { duration: 0.2 } },
+    };
+
+    // Check if a link or any of its children are active
+    const isActive = link => {
+        if (pathname === link.path && link.path !== '') return true;
+        if (link.children) {
+            return link.children.some(child => pathname === child.path);
+        }
+        return false;
+    };
+
     return (
         <>
             <header
@@ -55,75 +116,146 @@ export default function Header() {
                 <Container>
                     <div className='heading-wrap flex items-center justify-between'>
                         <Logo />
-                        <nav
-                            className={`heading-menu ${
-                                isMenu ? 'show-menu' : ''
-                            }`}>
-                            <div className='title flex items-center justify-between lg:hidden mb-4 md:mb-6'>
-                                <Logo />
-                                <button
-                                    className='heading-toggler'
-                                    onClick={() => setIsMenu(!isMenu)}>
-                                    <svg
-                                        xmlns='http://www.w3.org/2000/svg'
-                                        fill='none'
-                                        viewBox='0 0 24 24'
-                                        strokeWidth='1.5'
-                                        stroke='currentColor'
-                                        className='size-8 md:size-10'>
-                                        <path
-                                            strokeLinecap='round'
-                                            strokeLinejoin='round'
-                                            d='M6 18 18 6M6 6l12 12'
-                                        />
-                                    </svg>
-                                </button>
-                            </div>
-                            <nav className='lg:flex items-center lg:bg-white/6 lg:rounded-full lg:border border-solid border-white/5 backdrop-blur-md lg:px-3 xl:px-6 lg:py-1 xl:py-2'>
-                                {navLinks.map((link, index) => (
-                                    <div
-                                        className='relative group z-1'
-                                        key={index}>
-                                        <Link
-                                            className={`heading-link text-white hover:text-primary transition-colors flex items-center gap-1.5 capitalize ${
-                                                pathname === link.path
-                                                    ? 'active'
-                                                    : ''
-                                            }`}
-                                            href={link.path}
-                                            onClick={() =>
-                                                link.path != ''
-                                                    ? window.innerWidth <=
-                                                          991 &&
-                                                      handleTouchStart(link.to)
-                                                    : null
-                                            }>
-                                            {link.btn_title}{' '}
-                                            {link.children && <ArrowDown />}
-                                        </Link>
-                                        {link.children && (
-                                            <div className='transtion duration-300 hidden group-hover:flex lg:opacity-0 lg:invisible group-hover:lg:opacity-100 group-hover:lg:visible lg:absolute mt-2 z-1 top-full left-0 w-full min-w-50 px-2 py-3 lg:flex flex-col gap-y-2 bg-[#322A2D] backdrop-blur-2xl rounded-lg'>
-                                                {link.children.map(
-                                                    (item, i) => (
-                                                        <Link
-                                                            key={i}
-                                                            href={item.path}
-                                                            className={`heading-link text-white hover:text-primary  py-1! lg:py-0! px-2! hover:translate-x-1 ${
-                                                                pathname ===
-                                                                item.path
-                                                                    ? 'active'
-                                                                    : ''
-                                                            }`}>
-                                                            {item.name}
-                                                        </Link>
-                                                    )
-                                                )}
-                                            </div>
-                                        )}
-                                    </div>
-                                ))}
-                            </nav>
+
+                        {/* Desktop Navigation */}
+                        <nav className='hidden lg:flex heading-menu items-center lg:bg-white/6 lg:rounded-full lg:border border-solid border-white/5 backdrop-blur-md lg:px-3 xl:px-6 lg:py-1 xl:py-2'>
+                            {navLinks.map((link, index) => (
+                                <div className='relative group z-1' key={index}>
+                                    <Link
+                                        className={`heading-link hover:text-primary transition-colors flex items-center gap-1.5 capitalize ${
+                                            isActive(link)
+                                                ? 'active text-primary'
+                                                : 'text-white'
+                                        }`}
+                                        href={link.path || '#'}>
+                                        {link.btn_title}
+                                        {link.children && <ArrowDown />}
+                                    </Link>
+                                    {link.children && (
+                                        <div className='transtion duration-300 hidden group-hover:flex lg:opacity-0 lg:invisible group-hover:lg:opacity-100 group-hover:lg:visible lg:absolute mt-2 z-1 top-full left-0 w-full min-w-50 px-2 py-3 lg:flex flex-col gap-y-2 bg-[#322A2D] backdrop-blur-2xl rounded-lg'>
+                                            {link.children.map((item, i) => (
+                                                <Link
+                                                    key={i}
+                                                    href={item.path}
+                                                    className={`heading-link hover:text-primary py-1! lg:py-0! px-2! hover:translate-x-1 ${
+                                                        pathname === item.path
+                                                            ? 'active text-primary'
+                                                            : 'text-white'
+                                                    }`}>
+                                                    {item.name}
+                                                </Link>
+                                            ))}
+                                        </div>
+                                    )}
+                                </div>
+                            ))}
                         </nav>
+
+                        {/* Mobile Navigation Overlay */}
+                        <AnimatePresence>
+                            {isMenu && (
+                                <motion.nav
+                                    className='fixed inset-0 z-999 bg-black/95 backdrop-blur-xl flex flex-col p-6 lg:hidden overflow-y-auto'
+                                    variants={menuVariants}
+                                    initial='initial'
+                                    animate='animate'
+                                    exit='exit'>
+                                    <div className='flex items-center justify-between mb-8 flex-none'>
+                                        <div onClick={closeMenu}>
+                                            <Logo />
+                                        </div>
+                                        <button
+                                            className='heading-toggler text-white hover:text-primary transition-colors'
+                                            onClick={toggleMenu}>
+                                            <svg
+                                                xmlns='http://www.w3.org/2000/svg'
+                                                fill='none'
+                                                viewBox='0 0 24 24'
+                                                strokeWidth='1.5'
+                                                stroke='currentColor'
+                                                className='size-8'>
+                                                <path
+                                                    strokeLinecap='round'
+                                                    strokeLinejoin='round'
+                                                    d='M6 18 18 6M6 6l12 12'
+                                                />
+                                            </svg>
+                                        </button>
+                                    </div>
+
+                                    <motion.div
+                                        className='flex flex-col gap-6 grow'
+                                        variants={containerVariants}>
+                                        {navLinks.map((link, index) => (
+                                            <motion.div
+                                                key={index}
+                                                variants={itemVariants}>
+                                                <div className='group'>
+                                                    <Link
+                                                        className={`text-xl font-medium hover:text-primary transition-colors flex items-center justify-between capitalize ${
+                                                            isActive(link)
+                                                                ? 'text-primary'
+                                                                : 'text-white'
+                                                        }`}
+                                                        href={link.path || '#'}
+                                                        onClick={() =>
+                                                            link.path !== '' &&
+                                                            closeMenu()
+                                                        }>
+                                                        {link.btn_title}
+                                                        {link.children && (
+                                                            <ArrowDown
+                                                                className={`size-4 transform group-hover:rotate-180 transition-transform ${
+                                                                    isActive(
+                                                                        link
+                                                                    )
+                                                                        ? 'text-primary'
+                                                                        : 'text-white/70'
+                                                                }`}
+                                                            />
+                                                        )}
+                                                    </Link>
+
+                                                    {/* Mobile Submenu */}
+                                                    {link.children && (
+                                                        <div
+                                                            className={`pl-2 mt-3 flex flex-col gap-2.5 border-l ml-1 ${
+                                                                isActive(link)
+                                                                    ? 'border-primary/30'
+                                                                    : 'border-white/10'
+                                                            }`}>
+                                                            {link.children.map(
+                                                                (item, i) => (
+                                                                    <Link
+                                                                        key={i}
+                                                                        href={
+                                                                            item.path
+                                                                        }
+                                                                        className={`text-base hover:text-white transition-colors pl-3 ${
+                                                                            pathname ===
+                                                                            item.path
+                                                                                ? 'text-primary'
+                                                                                : 'text-gray-400'
+                                                                        }`}
+                                                                        onClick={
+                                                                            closeMenu
+                                                                        }>
+                                                                        {
+                                                                            item.name
+                                                                        }
+                                                                    </Link>
+                                                                )
+                                                            )}
+                                                        </div>
+                                                    )}
+                                                </div>
+                                            </motion.div>
+                                        ))}
+                                    </motion.div>
+                                </motion.nav>
+                            )}
+                        </AnimatePresence>
+
                         <div className='heading-actions flex items-center flex-wrap gap-2 md:gap-3'>
                             <SecondaryButton
                                 text='Try for free'
@@ -133,7 +265,7 @@ export default function Header() {
 
                             <button
                                 className='heading-toggler lg:hidden!'
-                                onClick={() => setIsMenu(!isMenu)}>
+                                onClick={toggleMenu}>
                                 <svg
                                     xmlns='http://www.w3.org/2000/svg'
                                     fill='none'

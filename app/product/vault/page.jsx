@@ -36,11 +36,11 @@ export default function page() {
                 <Vault />
             </Container>
             <CallToAction
-                title={`<span class='font-light'>Ready to</span> Get Your Edge?`}
+                title={`<span class='font-light'>Ready to</span> Master Fund Investing?`}
                 des={
                     'Join thousands of investors using Stoxie to see the market differently.'
                 }
-                btnText='Try Vault Free — 30 Days.'
+                btnText='Start Free Trial — 30 Days.'
             />
         </>
     );

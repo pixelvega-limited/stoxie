@@ -15,7 +15,7 @@ export default function page() {
         <>
             <Banner
                 innerClass='max-w-190'
-                className=' text-center min-h-150 md:min-h-200 lg:min-h-230 xl:min-h-250'
+                className='text-center'
                 subtitle='About Us'
                 title='Invest Smarter with Confidence.'
                 des='Stoxie was built to put powerful, AI-driven investment intelligence directly into the hands of everyday investors.'>
