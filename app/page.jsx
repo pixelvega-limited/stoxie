@@ -57,7 +57,7 @@ export default function Page() {
                         viewport={{ once: once, amount: 0.2 }}>
                         <SecondaryButton
                             text='Compare Plans'
-                            LinkTo='#'
+                            LinkTo='/pricing#compare-plans'
                             type='link'
                             className='justify-center'
                         />

@@ -18,7 +18,10 @@ export default function page() {
                 className='text-center'
                 subtitle='About Us'
                 title='Invest Smarter with Confidence.'
-                des='Stoxie was built to put powerful, AI-driven investment intelligence directly into the hands of everyday investors.'>
+                des='Stoxie was built to put powerful, AI-driven investment intelligence directly into the hands of everyday investors.'
+                is_btn_link='/pricing#compare-plans'
+                is_btn_text='See Our Plans'
+                is_btn={true}>
                 <motion.div
                     initial={{ scale: 0.8, opacity: 0 }}
                     whileInView={{ scale: 1, opacity: 1 }}

@@ -24,7 +24,7 @@ export default function plan() {
         },
     ];
     return (
-        <div className='common-padding relative z-1'>
+        <div id="compare-plans" className='common-padding relative z-1'>
             <div className='size-140 rounded-full absolute bottom-[17%] -left-[10%] blur-[400px] bg-[linear-gradient(180deg,rgba(214,255,201,0.30)_0%,rgba(174,255,147,0.30)_100%)] z-1'></div>
             <Container className='xl:max-w-325'>
                 <CommonTitle

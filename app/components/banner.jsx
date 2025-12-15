@@ -4,6 +4,7 @@ import { cn } from '@/lib/utils';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { duration, once, y } from '../lib/animation';
+import PrimaryButton from './common/primary-button';
 import { Container } from './grid';
 
 export default function banner({
@@ -19,6 +20,7 @@ export default function banner({
     children,
     is_btn = true,
     is_btn_text = 'See Our Plans',
+    is_btn_link = '/pricing',
 }) {
     return (
         <div
@@ -72,11 +74,11 @@ export default function banner({
                             transition={{ duration: duration, delay: 0.6 }}
                             viewport={{ once: once, amount: 0.2 }}
                             className='mt-4 sm:mt-5 md:mt-6 lg:mt-8 xl:mt-10'>
-                            <a
-                                href='#'
-                                className='btn w-full sm:w-auto sm:min-w-77'>
-                                <span>{is_btn_text}</span>
-                            </a>
+                            <PrimaryButton
+                                className='w-full sm:w-auto sm:min-w-77'
+                                text={is_btn_text}
+                                LinkTo={is_btn_link}
+                            />
                         </motion.div>
                     )}
                 </div>

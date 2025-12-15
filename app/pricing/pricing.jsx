@@ -24,7 +24,7 @@ export default function pricing() {
         },
     ];
     return (
-        <div className=''>
+        <div id='plan' className=''>
             <motion.div
                 initial={{ y: y, opacity: 0 }}
                 whileInView={{ y: 0, opacity: 1 }}
@@ -148,7 +148,7 @@ export default function pricing() {
                     <SecondaryButton
                         className='max-w-max mx-auto flex justify-center items-center'
                         text='Compare Plans'
-                        LinkTo='/pricing'
+                        LinkTo='/pricing#compare-plans'
                     />
                 </motion.div>
             </div>
