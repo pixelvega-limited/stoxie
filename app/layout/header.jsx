@@ -111,7 +111,7 @@ export default function Header() {
         <>
             <header
                 className={`heading bg-transparent top-0 left-0 z-20 w-full ${
-                    scrolled ? 'position-fixed' : 'absolute'
+                    scrolled ? 'position-fixed max-lg:absolute' : 'absolute'
                 }`}>
                 <Container>
                     <div className='heading-wrap flex items-center justify-between'>

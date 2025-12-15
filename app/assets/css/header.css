@@ -28,15 +28,17 @@
         }
 
         &.position-fixed {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            z-index: 20;
-            animation: headerAnimation 0.5s linear;
-            background-color: rgba(4, 4, 6, 0.7); /* $bg with alpha */
-            backdrop-filter: blur(10px);
-            --navbar-padding-y: 20px;
+            @media (min-width: 992px) {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                z-index: 20;
+                animation: headerAnimation 0.5s linear;
+                background-color: rgba(4, 4, 6, 0.7); /* $bg with alpha */
+                backdrop-filter: blur(10px);
+                --navbar-padding-y: 20px;
+            }
 
             @media (min-width: 992px) and (max-width: 1279px) {
                 --navbar-padding-y: 14px;

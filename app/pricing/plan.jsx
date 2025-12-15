@@ -36,7 +36,7 @@ export default function plan() {
                     whileInView={{ y: 0, opacity: 1 }}
                     transition={{ duration: duration, delay: 0.2 }}
                     viewport={{ once: once, amount: 0.2 }}>
-                    <div className='overflow-x-auto border border-solid border-white/16 rounded-2xl relative z-1 w-full'>
+                    <div className='overflow-x-auto border border-solid border-white/16 rounded-2xl relative z-1 w-full custom-scrollbar'>
                         <Image
                             src='/img/plan-shape-left.png'
                             alt=''
@@ -51,19 +51,19 @@ export default function plan() {
                             height={530}
                             className='h-auto hidden xl:block absolute top-0 left-0 -z-1'
                         />
-                        <table className='custom-table min-w-250 w-full border border-solid'>
+                        <table className='custom-table min-w-[600px] md:min-w-[800px] lg:min-w-[1000px] w-full border border-solid'>
                             <thead>
                                 <tr>
-                                    <th className='border-b border-r last:border-r-0 border-solid border-white/16 w-20 text-xl md:text-2xl text-left text-heading font-euclid font-light leading-[110%] pt-10 py-6 md:py-10 px-10'>
+                                    <th className='border-b border-r last:border-r-0 border-solid border-white/16 w-20 text-base sm:text-lg md:text-xl lg:text-2xl text-left text-heading font-euclid font-light leading-[110%] py-4 px-4 sm:py-6 sm:px-6 md:py-10 md:px-8 lg:px-10 align-bottom'>
                                         Feature
                                     </th>
-                                    <th className='border-b border-r last:border-r-0 border-solid border-white/16 text-nowrap text-left text-xl md:text-2xl text-heading font-euclid font-light leading-[110%] uppercase pt-10 py-6 md:py-10 px-8'>
+                                    <th className='border-b border-r last:border-r-0 border-solid border-white/16 text-nowrap text-left text-base sm:text-lg md:text-xl lg:text-2xl text-heading font-euclid font-light leading-[110%] uppercase py-4 px-4 sm:py-6 sm:px-6 md:py-10 md:px-8 align-bottom'>
                                         Preview (Free)
                                     </th>
-                                    <th className='border-b border-r last:border-r-0 border-solid border-white/16  text-left text-xl md:text-2xl text-heading font-euclid font-light leading-[110%] uppercase pt-10 py-6 md:py-10 px-8'>
+                                    <th className='border-b border-r last:border-r-0 border-solid border-white/16 text-left text-base sm:text-lg md:text-xl lg:text-2xl text-heading font-euclid font-light leading-[110%] uppercase py-4 px-4 sm:py-6 sm:px-6 md:py-10 md:px-8 align-bottom'>
                                         Essentials
                                     </th>
-                                    <th className='border-b border-r last:border-r-0 border-solid border-white/16  text-left text-xl md:text-2xl text-heading font-euclid font-light leading-[110%] uppercase pt-10 py-6 md:py-10 px-8'>
+                                    <th className='border-b border-r last:border-r-0 border-solid border-white/16 text-left text-base sm:text-lg md:text-xl lg:text-2xl text-heading font-euclid font-light leading-[110%] uppercase py-4 px-4 sm:py-6 sm:px-6 md:py-10 md:px-8 align-bottom'>
                                         Premium
                                     </th>
                                 </tr>
@@ -73,23 +73,24 @@ export default function plan() {
                                     <tr
                                         key={index}
                                         className='border border-solid border-white/16 border-x-0 first:border-t-0 last:border-b-0'>
-                                        <td className='border-r last:border-r-0 border-white/16 py-4 px-8 w-25 text-sm md:text-base lg:text-lg text-heading font-normal font-euclid leading-[110%]'>
+                                        <td className='border-r last:border-r-0 border-white/16 py-3 px-4 sm:py-4 sm:px-6 md:px-8 w-25 text-xs sm:text-sm md:text-base lg:text-lg text-heading font-normal font-euclid leading-[110%]'>
                                             {item.feature}
                                         </td>
-                                        <td className='border-r last:border-r-0 border-white/16 py-4 px-8 w-25 text-sm md:text-base lg:text-lg text-heading font-normal font-euclid leading-[110%]'>
+                                        <td className='border-r last:border-r-0 border-white/16 py-3 px-4 sm:py-4 sm:px-6 md:px-8 w-25 text-xs sm:text-sm md:text-base lg:text-lg text-heading font-normal font-euclid leading-[110%]'>
                                             <div className=''>
                                                 {item.preview ? (
                                                     <p className=''>
                                                         {item.preview}
                                                     </p>
                                                 ) : (
-                                                    <div className='max-w-5'>
+                                                    <div className='max-w-4 md:max-w-5'>
                                                         <svg
                                                             width='24'
                                                             height='24'
                                                             viewBox='0 0 24 24'
                                                             fill='none'
-                                                            xmlns='http://www.w3.org/2000/svg'>
+                                                            xmlns='http://www.w3.org/2000/svg'
+                                                            className='w-full h-auto'>
                                                             <rect
                                                                 x='6'
                                                                 y='6'
@@ -106,20 +107,21 @@ export default function plan() {
                                                 )}
                                             </div>
                                         </td>
-                                        <td className='border-r last:border-r-0 border-white/16 py-4 px-8 w-25 text-sm md:text-base lg:text-lg text-heading font-normal font-euclid leading-[110%]'>
+                                        <td className='border-r last:border-r-0 border-white/16 py-3 px-4 sm:py-4 sm:px-6 md:px-8 w-25 text-xs sm:text-sm md:text-base lg:text-lg text-heading font-normal font-euclid leading-[110%]'>
                                             <div className=''>
                                                 {item.essentials ? (
                                                     <p className=''>
                                                         {item.essentials}
                                                     </p>
                                                 ) : (
-                                                    <div className='max-w-5'>
+                                                    <div className='max-w-4 md:max-w-5'>
                                                         <svg
                                                             width='24'
                                                             height='24'
                                                             viewBox='0 0 24 24'
                                                             fill='none'
-                                                            xmlns='http://www.w3.org/2000/svg'>
+                                                            xmlns='http://www.w3.org/2000/svg'
+                                                            className='w-full h-auto'>
                                                             <rect
                                                                 x='6'
                                                                 y='6'
@@ -136,20 +138,21 @@ export default function plan() {
                                                 )}
                                             </div>
                                         </td>
-                                        <td className='border-r last:border-r-0 border-white/16 py-4 px-8 w-25 text-sm md:text-base lg:text-lg text-heading font-normal font-euclid leading-[110%]'>
+                                        <td className='border-r last:border-r-0 border-white/16 py-3 px-4 sm:py-4 sm:px-6 md:px-8 w-25 text-xs sm:text-sm md:text-base lg:text-lg text-heading font-normal font-euclid leading-[110%]'>
                                             <div className=''>
                                                 {item.premium ? (
                                                     <p className=''>
                                                         {item.premium}
                                                     </p>
                                                 ) : (
-                                                    <p className='max-w-5'>
+                                                    <p className='max-w-4 md:max-w-5'>
                                                         <svg
                                                             width='24'
                                                             height='24'
                                                             viewBox='0 0 24 24'
                                                             fill='none'
-                                                            xmlns='http://www.w3.org/2000/svg'>
+                                                            xmlns='http://www.w3.org/2000/svg'
+                                                            className='w-full h-auto'>
                                                             <rect
                                                                 x='6'
                                                                 y='6'
@@ -172,13 +175,13 @@ export default function plan() {
                         </table>
                     </div>
                 </motion.div>
-                <div className='max-w-110 mx-auto pt-8 md:pt-10'>
+                <div className='max-w-110 mx-auto pt-6 md:pt-10'>
                     <motion.h4
                         initial={{ y: y, opacity: 0 }}
                         whileInView={{ y: 0, opacity: 1 }}
                         transition={{ duration: duration, delay: 0 }}
                         viewport={{ once: once, amount: 0.2 }}
-                        className='text-2xl text-heading  text-center font-ft-system font-normal leading-[120%] mb-2 md:mb-3'>
+                        className='text-xl md:text-2xl text-heading text-center font-ft-system font-normal leading-[120%] mb-2 md:mb-3'>
                         No hidden fees. Cancel anytime.
                     </motion.h4>
                     <motion.p
@@ -186,11 +189,11 @@ export default function plan() {
                         whileInView={{ y: 0, opacity: 1 }}
                         transition={{ duration: duration, delay: 0 }}
                         viewport={{ once: once, amount: 0.2 }}
-                        className='text-base text-para  text-center font-euclid font-normal leading-[150%] mb-3 md:mb-5 xl:mb-6 mx-auto max-w-83 '>
+                        className='text-sm md:text-base text-para text-center font-euclid font-normal leading-[150%] mb-3 md:mb-5 xl:mb-6 mx-auto max-w-83'>
                         Your data stays private. Transparent pricing. 30 days
                         free to explore.
                     </motion.p>
-                    <div className='flex flex-wrap items-center justify-center gap-3 md:gap-4 mb-7.5'>
+                    <div className='flex flex-wrap items-center justify-center gap-3 md:gap-4 mb-6 md:mb-7.5'>
                         {free.map((item, index) => (
                             <motion.div
                                 initial={{ y: y, opacity: 0 }}
@@ -214,7 +217,7 @@ export default function plan() {
                         whileInView={{ y: 0, opacity: 1 }}
                         transition={{ duration: duration, delay: 0 }}
                         viewport={{ once: once, amount: 0.2 }}
-                        className='mt-[64px]'>
+                        className='mt-10 md:mt-[64px]'>
                         <PrimaryButton
                             text='Start Free Trial Now'
                             className='mx-auto flex justify-center items-center max-w-max'
