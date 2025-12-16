@@ -27,7 +27,7 @@ export const plans = [
     },
 ];
 
-export const planTable = [
+export const planTableData = [
     {
         feature: 'Free Trial',
         preview: '30-day free trial (Premium features)',

@@ -1,14 +1,10 @@
-'use client';
-
-import { motion } from 'framer-motion';
-import Image from 'next/image';
-import Banner from '../components/banner';
-import CallToAction from '../components/call-to-action';
-import { duration, once } from '../lib/animation';
-import Features from './features.jsx';
-import Investors from './investors.jsx';
-import Meet from './meet.jsx';
-import Values from './values.jsx';
+import AnimatedBannerImage from '@/components/common/animated-banner-image.jsx';
+import Banner from '@/components/common/banner.jsx';
+import CallToAction from '@/components/common/call-to-action.jsx';
+import Features from './components/features.jsx';
+import Investors from './components/investors.jsx';
+import MeetTheMinds from './components/meet-the-minds.jsx';
+import Values from './components/values.jsx';
 
 export default function page() {
     return (
@@ -22,25 +18,18 @@ export default function page() {
                 is_btn_link='/pricing#compare-plans'
                 is_btn_text='See Our Plans'
                 is_btn={true}>
-                <motion.div
-                    initial={{ scale: 0.8, opacity: 0 }}
-                    whileInView={{ scale: 1, opacity: 1 }}
-                    transition={{ duration: duration, delay: 0.2 }}
-                    viewport={{ once: once, amount: 0.2 }}
-                    className='mt-10 md:mt-16 lg:mt-18 xl:mt-21'>
-                    <Image
-                        src='/img/about/banner.png'
-                        width={1000}
-                        height={920}
-                        className='max-w-full mx-auto'
-                        alt=''
-                    />
-                </motion.div>
+                <AnimatedBannerImage
+                    image='/img/about/banner.png'
+                    height={920}
+                    width={1000}
+                    alt='banner image'
+                    className='max-w-full mx-auto'
+                />
             </Banner>
             <Features />
             <Investors />
             <Values />
-            <Meet />
+            <MeetTheMinds />
             <CallToAction
                 title={`<span class='font-light'>Ready to</span> Get Your Edge?`}
                 des={

@@ -1,0 +1,99 @@
+'use client';
+
+import { duration, once, y } from '@/app/lib/animation';
+import { Comment, Solution, Support } from '@/app/lib/icons';
+import PrimaryButton from '@/components/common/primary-button';
+import { Container } from '@/components/grid';
+import Input from '@/components/ui/input';
+import { motion } from 'framer-motion';
+const ConatctForm = () => {
+    const items = [
+        {
+            icon: <Support />,
+            title: 'Premium Support',
+            des: 'Get help from a product expert.',
+        },
+        {
+            icon: <Solution />,
+            title: 'Customer Solutions',
+            des: 'Get advice tailored to your team’s goals',
+        },
+    ];
+    return (
+        <div className='max-lg:pt-20! relative z-2 lg:-mt-85 '>
+            <Container>
+                <motion.div
+                    initial={{ y: y, opacity: 0 }}
+                    whileInView={{ y: 0, opacity: 1 }}
+                    transition={{ duration: duration, delay: 0 }}
+                    viewport={{ once: once, amount: 0.2 }}
+                    className='border-0 md:border-2 lg:border-4 border-white/40 md:bg-white/10 backdrop-blur-[100px] p-0 md:p-8 lg:p-10 md:rounded-3xl flex flex-wrap gap-6'>
+                    <div className='p-5 md:p-8 lg:p-11 border border-solid border-white/12 bg-[linear-gradient(180deg,rgba(255,255,255,0.04)_0%,rgba(255,255,255,0.00)_100%)] xl:max-w-160 w-full rounded-2xl md:rounded-3xl lg:rounded-4xl'>
+                        <div className='mb-6 md:mb-10 lg:mb-12'>
+                            <Comment />
+                            <h4 className='text-2xl leading-none mt-4'>
+                                Talk to sales
+                            </h4>
+                            <p className='text-para mt-3'>
+                                Complete the thought build better insights.
+                            </p>
+                        </div>
+                        <div className='flex flex-col gap-y-5'>
+                            <div className='grid grid-cols-1 md:grid-cols-2 gap-6'>
+                                <Input
+                                    type='text'
+                                    label='Name'
+                                    placeholder='Jenny Wilson'
+                                />
+                                <Input
+                                    type='email'
+                                    label='Email'
+                                    placeholder='example@gmail.com'
+                                />
+                            </div>
+                            <div className='grid grid-cols-1 md:grid-cols-2 gap-6'>
+                                <Input
+                                    type='text'
+                                    label='Company'
+                                    placeholder='Louis Vuitton'
+                                />
+                                <Input
+                                    type='text'
+                                    label='Country'
+                                    placeholder='USA'
+                                />
+                            </div>
+                            <Input
+                                type='textarea'
+                                label='How can we help?'
+                                placeholder='Tell us about your enterprises needs'
+                            />
+                            <PrimaryButton
+                                className='w-full md:w-max md:min-w-65'
+                                text='Get In Touch'
+                            />
+                        </div>
+                    </div>
+                    <div className='flex flex-wrap md:flex-nowrap flex-row xl:flex-col gap-4 w-full xl:max-w-93'>
+                        {items.map((item, index) => (
+                            <div
+                                className='w-full flex grow flex-col items-center justify-center gap-4 py-8 lg:py-10 md:h-full text-center border border-solid border-white/12 bg-[linear-gradient(180deg,rgba(255,255,255,0.04)_0%,rgba(255,255,255,0.00)_100%)] rounded-2xl md:rounded-3xl lg:rounded-4xl'
+                                key={index}>
+                                <div className='flex items-center justify-center'>
+                                    {item.icon}
+                                </div>
+                                <h4 className='text-2xl'>{item.title}</h4>
+                                <p className='text-base text-[#B4B4B4]'>
+                                    {item.des}
+                                </p>
+                            </div>
+                        ))}
+                    </div>
+                </motion.div>
+            </Container>
+        </div>
+    );
+};
+
+export default ConatctForm;
+
